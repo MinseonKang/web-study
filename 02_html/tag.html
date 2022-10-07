@@ -1,0 +1,78 @@
+<html lang="ko">
+    <head>
+        <title>테스트</title>
+    </head>
+    <body>
+        여기는 html 문서를 채우는 곳입니다.
+        <!-- 주석: 개발자를 위한 설명글-->
+        <!-- h1~h6 -->
+        <h1>제목입니다.</h1>
+        <h2>제목입니다.</h2>
+        <h3>제목입니다.</h3>
+        <h4>제목입니다.</h4>
+        <h5>제목입니다.</h5>
+        <h6>제목입니다.</h6>
+
+        <!--p: 하나의 문단을 표시하고 싶을 때-->
+        <p>여기는 첫 번째 문단입니다.</p>
+        <p>여기는 두 번째 문단입니다.</p>
+
+        <!--img: image의 약자, 이미지를 표시하고 싶을 때-->
+        <!-- src 속성: 이미지 경로-->
+        <!-- widyh, height 속성: 이미지 크기-->
+        <!--이미지는 inline 요소다.-->
+        <!--alt: 이미지가 오류가 났을 때 뜨는 설명, title 속성: 이미지 위에 마우스를 올렸을 때 뜨는 설명-->
+        <img src="https://img.hankyung.com/photo/202111/01.28063080.1.jpg" width="700px" height="500px" alt="고양이" title="마우스를 올리면 설명을 볼 수 있어요">
+        <!-- 상대경로 예시 <img src="./image/cat.jpg"> -->
+
+        <!--a-->
+        <!--href 속성: 주소-->
+        <!--target 속성: 페이지 안에서 페이지를 불러오는지, 새 페이지로 불러오는지-->
+        <br>
+        <a href="https://www.naver.com/">Naver</a>
+        <a href="https://www.Google.com/">Google</a>
+        <a href="https://www.daum.net/" target="_blank">Daum</a>
+        <hr>
+
+        <!-- div: division -->
+        <div>div1</div>
+        <div>div2</div>
+        <div>div3</div>
+
+        <!-- span: inline 요소(컨텐츠만큼 공간 차지)이기 때문에 줄바꿈이 안 됨-->
+        <span>span1</span>
+        <span>span2</span>
+        <p>안녕하세요. 저는 <span>강민선</span>입니다.</p>
+
+        <!-- ul, ol, li -->
+        <!-- ul: unordered list (순서가 없는 목록)-->
+        <!-- ol: ordered list (순서가 있는 목록)-->
+        <!-- type 속성: a, 1, A, 등등 숫자 변경-->
+        <!-- li: list -->
+        <ul>
+            <li>미국</li>
+            <li>일본</li>
+            <li>이탈리아</li>
+            <li>대만</li>
+        </ul>
+
+        <ol type="a" start="4" reversed>
+            <li>미국</li>
+            <li>일본</li>
+            <li>이탈리아</li>
+            <li>대만</li>
+        </ol>
+        <hr>
+        <!-- ul, ol 중첩 사용-->
+        <!-- ul > ul, ul > ol, ol > ol, ol > ul -->
+        <ul>
+            <li>요소1</li>
+            <li>요소2</li>
+            <ol>
+                <li>자식요소1</li>
+                <li>자식요소2</li>
+            </ol>
+            <li>요소3</li>
+        </ul>
+    </body>
+</html>

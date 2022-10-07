@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table 태그</title>
+</head>
+<body>
+    <h1>가격표</h1>
+    <table border="1" cellspacing="5" cellpadding="10">
+        <!--<thead></thead>-->
+        <!--<tfoot></tfoot>-->
+        <tr>
+            <th>메뉴</th>
+            <th>가격</th>
+            <th>비고</th>
+        </tr>
+        <tr>
+            <td align="center">국물 떡볶이</td>
+            <td align="center">4000원</td>
+            <td align="center">맵기 조절 가능</td>
+        </tr>
+        <tr>
+            <td align="center">짜장 국물 떡볶이</td>
+            <td align="center">5000원</td>
+            <td align="center">맵기 조절 가능</td>
+        </tr>
+        <tr>
+            <td align="center">궁중 떡볶이</td>
+            <td align="center">7000원</td>
+            <td align="center">맵기 조절 불가능</td>
+        </tr>
+        <tr>
+            <td align="center">기름 떡볶이</td>
+            <td align="center">5500원</td>
+            <td align="center">맵기 조절 불가능</td>
+        </tr>
+    </table>
+
+    <h1>new 가격표</h1>
+    <table border="1" cellspacing="5" cellpadding="10">
+        <tr>
+            <th>메뉴</th>
+            <th>가격</th>
+            <th>비고</th>
+        </tr>
+        <tr>
+            <td align="center">국물 떡볶이</td>
+            <td align="center">4000원</td>
+            <td align="center" rowspan="2">맵기 조절 가능</td>
+        </tr>
+        <tr>
+            <td align="center">짜장 국물 떡볶이</td>
+            <td align="center">5000원</td>
+        </tr>
+        <tr>
+            <td align="center">궁중 떡볶이</td>
+            <td align="center" rowspan="2">6500원</td>
+            <td align="center" rowspan="2">맵기 조절 불가능</td>
+        </tr>
+        <tr>
+            <td align="center">기름 떡볶이</td>
+        </tr>
+        <tr>
+        <td align="center" colspan="3" style="color: red;">순대(품절)</td>
+        </tr>
+    </table>
+
+    <h1>자리표</h1>
+    <table border="1" cellspacing="0" cellpadding="100" style="text-align: center;">
+        <tr>
+            <td colspan="2">1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <th rowspan="2" style="font-size: 50px;" width="200px"><img src="https://item.kakaocdn.net/do/15e2ea6551fc8981b493de76601697f07e6f47a71c79378b48860ead6a12bf11">4</th>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td style="color: red; font-size: 50px;">7</td>
+        </tr>
+    </table>
+
+    <h1>자리표2</h1>
+    <table border="1" cellspacing="0" cellpadding="50" style="text-align: center;">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td rowspan="2">3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td colspan="2">5</td>
+            <td rowspan="2">6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td colspan="2">8</td>
+        </tr>
+    </table>
+</body>
+</html>

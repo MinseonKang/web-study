@@ -1,0 +1,96 @@
+/* common */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    /* 
+        vh? 처음 보는 단위가 등장했습니다!
+        - vh: viewport height의 약자로 브라우저 1vh는 브라우저 뷰포트 높이의 1/100을 의미해요.
+        - 즉, 100vh는 브라우저 뷰포트 높이와 같아요. body 태그의 높이를 브라우저 뷰포트의 높이와 같게 설정했어요!
+        - 반응형 웹에 대해 학습하실 때 배우게 될 단위입니다 :)
+    */
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+h1, p {
+    margin: 0;
+}
+
+p {
+    text-align: justify;
+}
+
+/* TODO: Slack에서 실행영상을 참고해 제작해주세요~ */
+
+.card-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+    background-color: rgb(56, 56, 56);
+}
+.card {
+    width: 300px;
+    height: 450px;
+    border-radius: 10px;
+    background-color: white;
+    margin: 15px;
+    padding: 15px;
+}
+
+.card img {
+    width: 250px;
+    height: 200px;
+}
+
+.title {
+    text-align: center;
+    padding: 20px;
+}
+
+.caption {
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.card:nth-child(even) {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.card:hover {
+    transition: transform 1s;
+    transform: translateY(-50px);
+    box-shadow: 12px 12px 20px #ffffff75;
+}
+
+#kiwoom:hover .title {
+    color: #820024;
+    font-style: italic;
+}
+
+#lotte:hover .title {
+    color: #002955;
+    font-style: italic;
+}
+
+#lg:hover .title {
+    color: #C30452;
+    font-style: italic;
+}
+
+#hanwha:hover .title {
+    color: #ff6600	;
+    font-style: italic;
+
+}

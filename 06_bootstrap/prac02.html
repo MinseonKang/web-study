@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+<title>Bootstrap 자유 실습 2</title>
+
+<style>
+    * {
+    font-family: 'Gowun Dodum', sans-serif;
+    }
+    .mypic {
+    width: 100%;
+    height: 200px;
+
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://img.freepik.com/premium-photo/milky-way-galaxy-with-stars-and-space-dust-in-the-universe_33900-3.jpg?w=2000');
+    background-position: center;
+    background-size: cover;
+
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    }
+    .mypic > h1 {
+    font-size: 30px;
+    }
+    .mybox {
+    width: 95%;
+    max-width: 700px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px rgb(51, 62, 155);
+    margin: 20px auto;
+    }
+    .mybucket {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    }
+
+    .mybucket > input {
+    width: 70%;
+    }
+    .mybox > li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 10px;
+    min-height: 48px;
+    }
+    .mybox > li > h2 {
+    max-width: 75%;
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: auto;
+    margin-bottom: 0px;
+    }
+    .mybox > li > h2.done {
+    text-decoration:line-through
+    }
+</style>
+
+</head>
+<body>
+<div class="mypic">
+<h1>나의 버킷리스트</h1>
+</div>
+<div class="mybox">
+<div class="mybucket">
+<input id="bucket" class="form-control" type="text" placeholder="이루고 싶은 것을 입력하세요">
+<button onclick="save_bucket()" type="button" class="btn btn-outline-primary">기록하기</button>
+</div>
+</div>
+<div class="mybox" id="bucket-list">
+<li>
+<h2>✅ 죽기 전에 LG 우승하는 것 좀 보기</h2>
+<button onclick="done_bucket(5)" type="button" class="btn btn-outline-primary">완료!</button>
+</li>
+<li>
+<h2 class="done">✅ 하와이에서 스카이 다이빙 하기 </h2>
+</li>
+<li>
+<h2>✅ krd 3기 수료하기</h2>
+<button type="button" class="btn btn-outline-primary">완료!</button>
+</li>
+<li>
+    <h2>✅ 칠레에 가서 사막 보기</h2>
+    <button type="button" class="btn btn-outline-primary">완료!</button>
+</li>
+<li>
+    <h2>✅ 드림카 사기</h2>
+    <button type="button" class="btn btn-outline-primary">완료!</button>
+</li>
+<li>
+    <h2>✅ 부국제 가기</h2>
+    <button type="button" class="btn btn-outline-primary">완료!</button>
+</li>
+</div>
+</body>
+</html>

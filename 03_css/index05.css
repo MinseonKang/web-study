@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    width: 100px;
+    height: 100px;
+    font-weight: 700;
+    text-align: center; /* 수평 중앙*/
+    line-height: 100px; /* 수직 중앙 */
+}
+
+
+/* position: static (기본값)
+    - 기본값
+    - inline; 왼쪽 -> 오른쪽 차곡차곡 쌓임
+    - block; 위 -> 아래 차곡차곡 쌓임
+*/
+.position-static {
+    background-color: pink;
+    position: static;
+}
+
+/* position: relative (상대 위치)
+    - 자신이 원래 있어야 하는 위치 기준
+    - top: 위로부터의 여백 값
+    - bottom: 아래로부터의 여백 값
+    - right: 오른쪽으로부터의 여백 값ㅌㅈ
+    - left: 왼쪽으로부터의 여백 값
+*/
+.position-relative {
+    background-color: aquamarine;
+    position: relative;
+    /* top: 100px; */
+    /* bottom: 100px; */
+    /* right: 100px; */
+    /* left: 100px; */
+}
+
+/* position: absolute (절대위치)
+    누구를 기준?
+    - relative 값을 갖는 가장 가까운 조상이 있다면, 해당 요소 기준
+    - relative 값을 갖는 조상이 없다면, body 태그 기준
+    - 기준으로부터 top, bottom, right, left 중에 하나 이상 지정
+*/
+.position-absolute {
+    background-color: gold;
+    position: absolute;
+    /* i) body 태그 기준 (조상 요소 중에 position 없을 때 */
+    /* top: 10; */
+    /* bottom: 0; */
+    /* right: 0; */
+    /* left: 0; */
+
+    /* ii) 조상 요소 중에 position: relative 있는 경우  */
+    /* top: 50px; */
+    /* bottom: 100px; */
+    /* right: -50px; */
+    /* left: -50px; */
+}
+
+/* position: fixed (고정 위치)
+    - viewport를 기준으로 특정 위치에 배치
+    - viewport란? 
+*/
+.position-fixed {
+    background-color: coral;
+    position: fixed;
+    /* top: 0; */ /* header 만들 때 자주 사용 */
+    bottom: 0;
+}

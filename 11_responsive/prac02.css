@@ -1,0 +1,23 @@
+body {
+  box-sizing: border-box;
+  /* contnet + padding + border -> 크기로 계산 */
+  display: flex;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  margin: 10px;
+  border: 1px solid red;
+  border-radius: 20px;
+}
+
+@media (max-width: 700px) {
+  body {
+    flex-direction: column;
+  }
+  .box {
+    background-color: skyblue;
+  }
+}

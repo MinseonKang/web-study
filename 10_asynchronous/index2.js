@@ -212,15 +212,26 @@ function hell() {
   });
 }
 
-call("kang")
-  .then(function (name) {
-    console.log(name + "반가워");
-    return back("back");
-  })
-  .then(function (txt) {
-    console.log(txt + "을 실행했구나");
-    return hell();
-  })
-  .then(function () {
-    console.log("여기는 callback hell");
-  });
+// call("kang")
+//   .then(function (name) {
+//     console.log(name + "반가워");
+//     return back("back");
+//   })
+//   .then(function (txt) {
+//     console.log(txt + "을 실행했구나");
+//     return hell();
+//   })
+//   .then(function () {
+//     console.log("여기는 callback hell");
+//   });
+
+async function exec() {
+  let call2 = await call("kim");
+  console.log(call2 + "반가워");
+  let back2 = await back();
+  console.log(back2 + "을 실행했구나");
+  let hell2 = await hell();
+  console.log("여기는 " + hell2);
+}
+
+exec();

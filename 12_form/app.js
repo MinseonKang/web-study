@@ -37,7 +37,7 @@ app.post("/postForm", function (req, res) {
 // 실습 26
 app.get("/prac26", function (req, res) {
   res.render("prac26", {
-    title: "실습26. get으로 정보받기",
+    title: "실습26. get으로 정보받기, 실습 29. axios get 회원가입",
   });
 });
 
@@ -62,6 +62,37 @@ app.post("/postForm27", function (req, res) {
     title: "실습27 폼 전송 완료!",
     userInfoPrac27: req.body,
   });
+});
+
+// 실습 29
+app.get("/axiosprac29", function (req, res) {
+  console.log(req.query);
+  res.send(req.query);
+});
+
+// 실습 30
+const realID = "minseon";
+const realPW = "1234";
+
+app.post("/axiosprac30", function (req, res) {
+  console.log(req.body); //{ ID: 'adsa', PW: 'dfsfgs' }
+
+  if (realID === req.body.ID) {
+    // 아이디 일치
+    if (realPW === req.body.PW) {
+      // 아이디 비번 모두 일치
+      res.send({ userInfo: req.body, isLogin: true });
+    } else {
+      // 아이디 일치, 비번 불일치
+      res.send({ userInfo: req.body, isLogin: false });
+    }
+  } else {
+    // 아이디 비번 모두 불일치
+    res.send({
+      userInfo: req.body,
+      isLogin: false,
+    });
+  }
 });
 
 app.listen(PORT, function () {

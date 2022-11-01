@@ -5,10 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>실습 26</title>
+     <!-- axios cdn -->
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+     <style>
+      .success {
+        color: blue;
+      }
+      .error {
+        color: red;
+      }
+     </style>
   </head>
   <body>
     <h1><%= title %></h1>
-    <form action="/getForm26" name="signin1" method="get">
+    <!-- 실습 26 -->
+    <!-- <form action="/getForm26" name="signin1" method="get"></form> -->
+    <form name="signin1">
       <label for="name">이름</label>
       <input type="text" id="name" name="name" />
       <fieldset>
@@ -21,7 +34,7 @@
       </fieldset>
       <fieldset>
         <legend>생년월일</legend>
-        <select name="birthYear" name="year" id="year" value="year">
+        <select name="birthYear" id="year" value="year">
           <option value="2010">2010</option>
           <option value="2009">2009</option>
           <option value="2008">2008</option>
@@ -33,9 +46,10 @@
           <option value="2002">2002</option>
           <option value="2001">2001</option>
           <option value="2000">2000</option>
+          </option>
         </select>
         <label for="year">년</label>
-        <select name="birthMonth" name="month" id="month" value="month">
+        <select name="birthMonth" id="month" value="month">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -50,7 +64,7 @@
           <option value="12">12</option>
         </select>
         <label for="month">월</label>
-        <select name="birthDay" name="day" id="day" value="day">
+        <select name="birthDay" id="day" value="day">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -97,7 +111,94 @@
         <br />
       </fieldset>
       <br />
-      <button type="submit">회원가입</button>
+      <button type="button" onclick="singInClick()">회원가입</button>
+    </form>
+    <div class="result"></div>
+
+    <hr>
+
+    <h1>실습 30. axios post 로그인</h1>
+    <form name="prac30">
+      <label for="pracID">아이디</label>
+      <input type="text" name="pracID" id="pracID">
+      <br>
+      <label for="pracPW">비밀번호</label>
+      <input type="password" name="pracPW" id="pracPW">
+      <br>
+      <button type="button" onclick="loginClick()">로그인</button>
+    </form>
+    <div class="result-prac30"></div>
+      
+      <script>
+        const resultBox = document.querySelector('.result');
+        const resultBox2 = document.querySelector('.result-prac30');
+
+        function singInClick () {
+          console.log("회원가입 완료!");
+
+          const form = document.forms["signin1"];
+          console.log(form.name.value);
+          console.log(form.month.value);
+          console.log(form.day.value);
+
+          const data = {
+            name: form.name.value,
+            month: form.month.value,
+            day: form.day.value,
+          }
+
+          axios({
+          method: "GET",
+          url: "/axiosprac29",
+          params: data,
+        }).then(function (response) {
+          console.log(response); // 서버의 응답 결과
+          console.log(response.data);
+          console.log(response.data.name);
+          console.log(response.data.month);
+          console.log(response.data.day);
+
+
+          resultBox.textContent = `${response.data.month}월 ${response.data.day}에 태어나신 ${response.data.name}님! 회원가입 완료되었습니다! 🎁 `;
+          resultBox.style.color = "blue";
+        });
+        }
+
+        function loginClick() {
+          console.log("로그인 성공!");
+          const form = document.forms["prac30"];
+          console.log(form);
+
+          const data = {
+            ID: form.pracID.value,
+            PW: form.pracPW.value,
+          }
+          console.log(data);
+
+          axios({
+          method: "POST",
+          url: "/axiosprac30",
+          data: data, // POST 요청은 "data"에 정보를 실어서 보내야 됨 (get 방식이랑 다름!)
+        }).then(function (response) {
+          console.log(response);
+          console.log(response.data);
+          console.log(response.data.userInfo);
+          // console.log(response.data.msg);
+
+
+          if (response.data.isLogin) {
+            resultBox2.textContent = `${response.data.userInfo.ID}님! 로그인 성공!`;
+            resultBox2.classList.remove('error');
+            resultBox2.classList.add('success');
+          } else {
+            resultBox2.textContent = `아이디 또는 패스워드 오류🥺`;
+            resultBox2.classList.remove('success');
+            resultBox2.classList.add('error');
+          }
+        });
+
+        }
+      </script>
     </form>
   </body>
 </html>

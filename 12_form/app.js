@@ -75,7 +75,7 @@ const realID = "minseon";
 const realPW = "1234";
 
 app.post("/axiosprac30", function (req, res) {
-  console.log(req.body); //{ ID: 'adsa', PW: 'dfsfgs' }
+  console.log(req.body);
 
   if (realID === req.body.ID) {
     // 아이디 일치

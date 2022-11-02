@@ -21,11 +21,11 @@
 
     <form name="register">
       <label for="name">이름</label>
-      <input type="text" id="name" />
+      <input type="text" id="name" required />
       <br />
       <span>성별</span>
       <label for="f">여성</label>
-      <input type="radio" name="gender" id="f" value="여성" />
+      <input type="radio" name="gender" id="f" value="여성" required />
       <label for="m">남성</label>
       <input type="radio" name="gender" id="m" value="남성" />
       <br />
@@ -112,26 +112,42 @@
         console.log("===========AXIOS Get click===========");
 
         const form = document.forms["register"];
+
+        // 유효성 검사 (button type이 sumbit이어야만 required가 적용됨)
+        // 동적폼처리에서 유효성 검사하기 checkValidity()
+        console.log(form.name.checkValidity()); // input name
+        console.log(form.gender[0].checkValidity());
+
         const data = {
           name: form.name.value,
           gender: form.gender.value,
         };
 
         // AXIOS 비동기 통신 - GET 요청
-        axios({
-          method: "GET",
-          url: "/axios",
-          params: data, // GET 요청은 params에 정보를 실어서 보내야 됨
-        }).then(function (response) {
-          // axios는 promise를 반환함
-          console.log(response); // 서버의 응답 결과
-          console.log(response.data); // res.send(req.query);가 들어 있음
-          console.log(response.data.name);
-          console.log(response.data.gender);
+        // 사용자의 입력이 올바르지 않다면, axios 요청 시도 x
+        // 사용자의 입력이 올바르다면, axios 요청 시도
+        if (
+          form.name.checkValidity() === true &&
+          form.gender[0].checkValidity()
+        ) {
+          axios({
+            method: "GET",
+            url: "/axios",
+            params: data, // GET 요청은 "params"에 정보를 실어서 보내야 됨
+          }).then(function (response) {
+            // axios는 promise를 반환한다!! -> then 메서드 사용
+            console.log(response); // 서버의 응답결과
+            console.log(response.data); // res.send(req.query)
+            console.log(response.data.name);
+            console.log(response.data.gender);
 
-          resultBox.textContent = `POST /axios 요청 완료! ${response.data.name}님은 ${response.data.gender}이시죠?`;
-          resultBox.style.color = "green";
-        });
+            resultBox.textContent = `GET /axios 요청 완료!! ${response.data.name}님은 ${response.data.gender}이시죠?ㅎㅎ`;
+            resultBox.style.color = "green";
+          });
+        } else {
+          resultBox.textContent = "입력값을 올바르게 채워주세요";
+          resultBox.style.color = "red";
+        }
       }
 
       function axiosPost() {

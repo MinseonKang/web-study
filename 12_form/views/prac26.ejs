@@ -5,17 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>실습 26</title>
-     <!-- axios cdn -->
-     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-     <style>
+    <style>
+      p {
+        color: grey;
+        font-size: 15px;
+      }
       .success {
         color: blue;
       }
       .error {
         color: red;
       }
-     </style>
+    </style>
   </head>
   <body>
     <h1><%= title %></h1>
@@ -34,71 +38,24 @@
       </fieldset>
       <fieldset>
         <legend>생년월일</legend>
-        <select name="birthYear" id="year" value="year">
-          <option value="2010">2010</option>
-          <option value="2009">2009</option>
-          <option value="2008">2008</option>
-          <option value="2007">2007</option>
-          <option value="2006">2006</option>
-          <option value="2005">2005</option>
-          <option value="2004">2004</option>
-          <option value="2003">2003</option>
-          <option value="2002">2002</option>
-          <option value="2001">2001</option>
-          <option value="2000">2000</option>
-          </option>
+        <select name="birthYear" id="year">
+          <% for (let i = 0; i < 50; i++) { %>
+          <option value="<%= 2010 - i %>"><%= 2010 - i %></option>
+          <% } %>
         </select>
         <label for="year">년</label>
-        <select name="birthMonth" id="month" value="month">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
+        <select name="birthMonth" id="month">
+          <% for (let i = 1; i < 13; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
         </select>
         <label for="month">월</label>
-        <select name="birthDay" id="day" value="day">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-          <option value="13">13</option>
-          <option value="14">14</option>
-          <option value="15">15</option>
-          <option value="16">16</option>
-          <option value="17">17</option>
-          <option value="18">18</option>
-          <option value="19">19</option>
-          <option value="20">20</option>
-          <option value="21">21</option>
-          <option value="22">22</option>
-          <option value="23">23</option>
-          <option value="24">24</option>
-          <option value="25">25</option>
-          <option value="26">26</option>
-          <option value="27">27</option>
-          <option value="28">28</option>
-          <option value="29">29</option>
-          <option value="30">30</option>
-          <option value="31">31</option>
+        <select name="birthDay" id="day">
+          <% for (let i = 1; i < 31; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
         </select>
         <label for="day">일</label>
-        <br />
       </fieldset>
       <fieldset>
         <legend>관심사</legend>
@@ -111,43 +68,48 @@
         <br />
       </fieldset>
       <br />
+      <!-- 실습 29 -->
       <button type="button" onclick="singInClick()">회원가입</button>
     </form>
     <div class="result"></div>
 
-    <hr>
-
+    <hr />
+    <!-- 실습 30 -->
     <h1>실습 30. axios post 로그인</h1>
+    <p>
+      (참고) app.js에 저장한 아이디는 minseon이고, 비밀번호는 1234입니다.
+      일치/불일치를 확인해 주세요.
+    </p>
     <form name="prac30">
       <label for="pracID">아이디</label>
-      <input type="text" name="pracID" id="pracID">
-      <br>
+      <input type="text" name="pracID" id="pracID" required />
+      <br />
       <label for="pracPW">비밀번호</label>
-      <input type="password" name="pracPW" id="pracPW">
-      <br>
+      <input type="password" name="pracPW" id="pracPW" required />
+      <br />
       <button type="button" onclick="loginClick()">로그인</button>
     </form>
     <div class="result-prac30"></div>
-      
-      <script>
-        const resultBox = document.querySelector('.result');
-        const resultBox2 = document.querySelector('.result-prac30');
 
-        function singInClick () {
-          console.log("회원가입 완료!");
+    <script>
+      const resultBox = document.querySelector(".result");
+      const resultBox2 = document.querySelector(".result-prac30");
 
-          const form = document.forms["signin1"];
-          console.log(form.name.value);
-          console.log(form.month.value);
-          console.log(form.day.value);
+      function singInClick() {
+        console.log("회원가입 완료!");
 
-          const data = {
-            name: form.name.value,
-            month: form.month.value,
-            day: form.day.value,
-          }
+        const form = document.forms["signin1"];
+        console.log(form.name.value);
+        console.log(form.month.value);
+        console.log(form.day.value);
 
-          axios({
+        const data = {
+          name: form.name.value,
+          month: form.month.value,
+          day: form.day.value,
+        };
+
+        axios({
           method: "GET",
           url: "/axiosprac29",
           params: data,
@@ -158,47 +120,54 @@
           console.log(response.data.month);
           console.log(response.data.day);
 
-
           resultBox.textContent = `${response.data.month}월 ${response.data.day}에 태어나신 ${response.data.name}님! 회원가입 완료되었습니다! 🎁 `;
           resultBox.style.color = "blue";
         });
-        }
+      }
 
-        function loginClick() {
-          console.log("로그인 성공!");
-          const form = document.forms["prac30"];
-          console.log(form);
+      function loginClick() {
+        console.log("로그인 성공!");
+        const form = document.forms["prac30"];
+        console.log(form);
 
-          const data = {
-            ID: form.pracID.value,
-            PW: form.pracPW.value,
-          }
-          console.log(data);
+        const data = {
+          ID: form.pracID.value,
+          PW: form.pracPW.value,
+        };
+        console.log(data);
 
+        // 유효성 검사
+        // 입력값이 올바르면, axios 요청 시도
+        if (
+          form.pracID.checkValidity() === true &&
+          form.pracPW.checkValidity() === true
+        ) {
           axios({
-          method: "POST",
-          url: "/axiosprac30",
-          data: data, // POST 요청은 "data"에 정보를 실어서 보내야 됨 (get 방식이랑 다름!)
-        }).then(function (response) {
-          console.log(response);
-          console.log(response.data);
-          console.log(response.data.userInfo);
-          // console.log(response.data.msg);
+            method: "POST",
+            url: "/axiosprac30",
+            data: data, // POST 요청은 "data"에 정보를 실어서 보내야 됨 (get 방식이랑 다름!)
+          }).then(function (response) {
+            console.log(response);
+            console.log(response.data);
+            console.log(response.data.userInfo);
 
-
-          if (response.data.isLogin) {
-            resultBox2.textContent = `${response.data.userInfo.ID}님! 로그인 성공!`;
-            resultBox2.classList.remove('error');
-            resultBox2.classList.add('success');
-          } else {
-            resultBox2.textContent = `아이디 또는 패스워드 오류🥺`;
-            resultBox2.classList.remove('success');
-            resultBox2.classList.add('error');
-          }
-        });
-
+            if (response.data.isLogin) {
+              resultBox2.textContent = `${response.data.userInfo.ID}님! 로그인 성공!`;
+              resultBox2.classList.remove("error");
+              resultBox2.classList.add("success");
+            } else {
+              resultBox2.textContent = `아이디 또는 패스워드 오류🥺`;
+              resultBox2.classList.remove("success");
+              resultBox2.classList.add("error");
+            }
+          });
+        } else {
+          // 올바르지 않다면, axios 요청 시도 x -> 경고 메시지
+          resultBox2.textContent = "입력값을 올바르게 채워주세요!";
+          resultBox2.classList.remove("success");
+          resultBox2.classList.add("error");
         }
-      </script>
-    </form>
+      }
+    </script>
   </body>
 </html>

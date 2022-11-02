@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파일 업로드</title>
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <h2>Single file upload</h2>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="userfile" /> <br />
+      <input type="text" name="title" /><br />
+      <button type="submit">업로드</button>
+    </form>
+    <br />
+
+    <h2>Multi file upload (ver.1)</h2>
+    <p>하나의 input에 여러 개 파일을 업로드하기</p>
+    <form action="/upload/array" method="POST" enctype="multipart/form-data">
+      <input type="file" name="userfiles" multiple /> <br />
+      <input type="text" name="title" /><br />
+      <button type="submit">업로드</button>
+    </form>
+    <br />
+
+    <h2>Multi file upload (ver.2)</h2>
+    <p>여러 개의 input에 각각 파일을 업로드하기</p>
+    <form action="/upload/fields" method="POST" enctype="multipart/form-data">
+      <input type="file" name="userfile1" /> <br />
+      <input type="text" name="title1" /><br />
+      <input type="file" name="userfile2" /> <br />
+      <input type="text" name="title2" /><br />
+      <button type="submit">업로드</button>
+    </form>
+
+    <h2>실습31. 파일 업로드</h2>
+    <form action="/test" method="POST" enctype="multipart/form-data">
+      <input type="text" name="ID" id="ID" placeholder="ID" /><br />
+      <input type="password" name="PW" id="PW" placeholder="PW" /><br />
+      <input type="text" name="name" id="name" placeholder="이름" /><br />
+      <input type="text" name="age" id="age" placeholder="나이" /><br />
+      <input type="file" name="userfilePrac" /> <br />
+      <button type="submit">회원가입</button>
+    </form>
+  </body>
+</html>

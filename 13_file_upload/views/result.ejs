@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습31</title>
+    <style>
+      body {
+        background-color: rgb(223, 192, 192);
+        display: flex;
+        justify-content: center;
+        align-content: center;
+      }
+      .box {
+        background-color: white;
+        width: 500px;
+        height: 500px;
+        border-radius: 20px;
+      }
+      img {
+        width: 250px;
+        height: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <img src="<%= userImg %>" alt="" />
+      <h3><%= userInfo.ID %>님 환영합니다!</h3>
+      <p>비밀번호: <%= userInfo.PW %></p>
+      <p>이름: <%= userInfo.name %></p>
+      <p>나이: <%= userInfo.age %></p>
+    </div>
+  </body>
+</html>

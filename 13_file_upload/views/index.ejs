@@ -38,14 +38,51 @@
       <button type="submit">업로드</button>
     </form>
 
+    <h2>동적파일 업로드</h2>
+    <input type="file" name="dynamicFile" id="dynamicFile" /><br />
+    <button type="button" onclick="fileUpload()">업로드</button><br />
+    <img src="" width="200" />
+
     <h2>실습31. 파일 업로드</h2>
-    <form action="/test" method="POST" enctype="multipart/form-data">
-      <input type="text" name="ID" id="ID" placeholder="ID" /><br />
-      <input type="password" name="PW" id="PW" placeholder="PW" /><br />
-      <input type="text" name="name" id="name" placeholder="이름" /><br />
-      <input type="text" name="age" id="age" placeholder="나이" /><br />
+    <form action="/prac" method="POST" enctype="multipart/form-data">
+      <input type="text" name="ID" placeholder="ID" /><br />
+      <input type="password" name="PW" placeholder="PW" /><br />
+      <input type="text" name="name" placeholder="이름" /><br />
+      <input type="number" name="age" placeholder="나이" /><br />
       <input type="file" name="userfilePrac" /> <br />
       <button type="submit">회원가입</button>
     </form>
+
+    <script>
+      function fileUpload() {
+        console.log("click fileupload");
+
+        const formData = new FormData(); // 폼 객체 생성
+        const file = document.getElementById("dynamicFile"); // file input
+
+        console.dir(file); // file input
+        console.dir(file.files[0]); // file input에 들어간 파일 정보
+
+        // formData.append(name, value);
+        // - input의 name과 input의 value
+        formData.append("dynamicFile", file.files[0]);
+
+        // axios 통신
+        axios({
+          method: "POST",
+          url: "/dynamicFile",
+          data: formData,
+          headers: {
+            "Content-Type": "multipart/form-data", // enctype="multipart/form-data"
+          },
+        }).then(function (response) {
+          // response: 클라이언트가 POST /dynamicFile 요청을 보낸 응답 결과
+          console.log(response);
+          console.log(response.data);
+          console.log(response.data.path);
+          document.querySelector("img").src = response.data.path;
+        });
+      }
+    </script>
   </body>
 </html>

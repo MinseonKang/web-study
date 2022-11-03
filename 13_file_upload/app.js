@@ -29,13 +29,13 @@ const uploadDetail = multer({
       // 현재 시간: 파일명이 겹치는 것을 막기 위함
     },
   }),
-  limits: { fileSize: 5 * 1024 * 1024 },
+  //   limits: { fileSize: 5 * 1024 * 1024 },
 });
 
 // views 설정
 app.set("view engine", "ejs"); // view engine 등록
 app.use("/views", express.static(__dirname + "/views"));
-app.use("/uploads", express.static(__dirname + "/uploads")); // uploads 폴더 static
+app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // json 형태로 데이터를 전달받음
 
@@ -87,24 +87,22 @@ app.post(
   }
 );
 
+// 4.동적 파일 업로드 (axios)
+app.post(
+  "/dynamicFile",
+  uploadDetail.single("dynamicFile"),
+  function (req, res) {
+    console.log(req.file);
+    res.send(req.file);
+  }
+);
+
 // 실습 31
-// app.post("/ms/test", uploadDetail.single("userfilePrac"), function (req, res) {
-//   console.log(req.file.filename);
-//   console.log(req.body);
-
-//   res.render("result", {
-//     userImg: req.file.filename,
-//     userInfo: req.body,
-//   });
-// });
-
-app.post("/test", uploadDetail.single("userfilePrac"), function (req, res) {
+app.post("/prac", uploadDetail.single("userfilePrac"), function (req, res) {
   console.log(req.file.path);
   console.log(req.body);
   res.render("result", { userImg: req.file.path, userInfo: req.body });
 });
-
-// 4. axios
 
 app.listen(PORT, function () {
   console.log(`http://localhost:${PORT}`);

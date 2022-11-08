@@ -45,36 +45,7 @@
     <div class="login-result"></div>
 
     <script>
-      const registerResult = document.querySelector(".register-result");
       const loginResult = document.querySelector(".login-result");
-
-      function clickRegister() {
-        console.log("click register");
-
-        const form = document.forms["register"];
-        console.dir(form);
-        const data = {
-          username: form.username.value,
-        };
-
-        // form validation
-        // console.log(form.username.checkValidity());
-        if (!form.username.checkValidity()) {
-          registerResult.textContent = "이름은 필수 값입니다!";
-          return;
-        }
-
-        axios({
-          method: "GET",
-          url: "/practice29",
-          params: data,
-        }).then(function (response) {
-          console.log(response);
-          console.log(response.data);
-          registerResult.textContent = `${response.data.username}님 환영합니다! 가입이 완료되었습니다.🎉`;
-          registerResult.classList.add("success");
-        });
-      }
 
       function clickLogin() {
         console.log("click login");

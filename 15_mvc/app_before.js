@@ -1,4 +1,5 @@
-const { render } = require("ejs");
+// MVC 패턴 적용 전 app.js 코드
+
 const express = require("express");
 const app = express();
 const PORT = 8080;

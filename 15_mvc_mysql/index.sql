@@ -25,7 +25,14 @@ INSERT INTO visitor (name, comment) VALUES ('홍길동', '내가 왔다.');
 INSERT INTO visitor (name, comment) VALUES ('이찬혁', '으라차차.');
 
 -- visitor 테이블 안의 데이터들 조회하기 (READ)
-SELECT * FROM visitor;
+SELECT * FROM visitor; -- all
+SELECT * FROM visitor WHERE id = 1; -- one
+
+-- visitor 테이블 안의 데이터 수정 (UPDATE)
+UPDATE visitor SET name = '이름', comment = '내용' WHERE id = 1;
+
+-- visitor 테이블 안의 데이터 삭제 (DELETE)
+DELETE FROM visitor WHERE id = 1;
 
 -- DCL
 -- mySQL 사용자 추가(user 사용자 생성하기)

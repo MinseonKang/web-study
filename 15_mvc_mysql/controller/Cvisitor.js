@@ -19,6 +19,17 @@ exports.getVisitors = (req, res) => {
   });
 };
 
+// GET /visitor/get => localhost:PORT/visitor/get
+exports.getVisitor = (req, res) => {
+  console.log(req.query); // { id: '1'}
+  console.log(req.query.id); // '1'
+
+  Visitor.getVisitor(req.query.id, (result) => {
+    console.log("Cvisitor: ", result);
+    res.send(result);
+  });
+};
+
 // POST /visitor/write => localhost:PORT/visitor/write
 exports.postVisitor = (req, res) => {
   console.log(req.body);
@@ -34,7 +45,14 @@ exports.postVisitor = (req, res) => {
 };
 
 // PATCH /visitor/edit => localhost:PORT/visitor/edit
-exports.editVisitor = (req, res) => {};
+exports.patchVisitor = (req, res) => {
+  console.log(req.body);
+
+  Visitor.patchVisitor(req.body, (result) => {
+    console.log("Cvisitor.js", result);
+    res.send("수정 성공!");
+  });
+};
 
 // DELETE /visitor/delete => localhost:PORT/visitor/delete
 exports.deletetVisitor = (req, res) => {
@@ -42,6 +60,6 @@ exports.deletetVisitor = (req, res) => {
 
   Visitor.deletetVisitor(req.body.id, (result) => {
     console.log("Cvisitor.js: ", result);
-    res.send("삭제하시겠습니까?");
+    res.send("삭제하였습니다!");
   });
 };

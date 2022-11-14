@@ -26,6 +26,7 @@ db.Sequelize = Sequelize;
 db.Visitor = require("./Visitor")(sequelize, Sequelize);
 // models/Visitor.js에 정의한 model이 db.Visitor에 들어감
 // db = { sequelize: sequelize, Sequelize: Sequelize, Visitor: model }
+db.User = require("./User")(sequelize, Sequelize);
 
 module.exports = db;
 // db 변수 내보냄 -> 다른 파일에서 사용하기 때문

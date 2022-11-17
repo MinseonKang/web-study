@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>채팅 프로그램</title>
+
+    <!-- socket.io cdn -->
+    <script
+      src="https://cdn.socket.io/4.5.3/socket.io.min.js"
+      integrity="sha384-WPFUvHkB1aHA5TDSZi6xtDgkF0wXJcIIxXhC6h8OT8EH3fC5PWro5pWJ1THjcfEi"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/static/chat.css" />
+  </head>
+  <body>
+    <!-- [실습42] -->
+    <!-- <button onclick="sayHello()">hello</button>
+    <button onclick="sayStudy()">study</button>
+    <button onclick="sayBye()">bye</button>
+    <p id="from-server"></p> -->
+
+    <!-- [실습43] -->
+    <h1>심심이</h1>
+
+    <!-- [실습44-2] 채팅창 입장 문구 안내 socket.id -> nickname -->
+    <div class="entry-box">
+      <input type="text" id="nickname" placeholder="닉네임" autofocus />
+      <button type="button" class="chat-button" onclick="entry()">입장</button>
+    </div>
+    <div class="set-name">닉네임을 설정한 뒤에 이용해 주세요!</div>
+    <div id="chat-box">
+      <!-- 임시 데이터 -->
+      <!-- <div class="mine messages">
+        <div class="message last">
+          <div>msg1</div>
+        </div>
+      </div>
+      <div class="yours messages">
+        <div class="your-name">상대 이름</div>
+        <div class="message last">
+          <div>msg2</div>
+        </div>
+      </div> -->
+    </div>
+    <div class="input-box">
+      To
+      <select id="name-list">
+        <!-- <option value="all">전체</option>
+        <option value="socketId1">name1</option>
+        <option value="socketId2">name2</option> -->
+      </select>
+      <input type="text" name="message" id="message" class="chat-input" />
+      <button type="button" class="chat-button" onclick="send()">전송</button>
+    </div>
+
+    <!-- jQuery cdn -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+    <!-- javascript 연결 -->
+    <script src="/static/chat.js"></script>
+  </body>
+</html>

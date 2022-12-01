@@ -1,5 +1,5 @@
 import "./App.css";
-import grass from "./grass.png";
+// import grass from "./grass.png";
 import React from "react";
 
 function App() {

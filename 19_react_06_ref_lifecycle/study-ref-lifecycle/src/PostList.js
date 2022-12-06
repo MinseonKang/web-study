@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import PostItem from "./PostItem";
+import SkeletonComponent from "./SkeletonComponent";
 
 // 가짜 데이터
 // https://jsonplaceholder.typicode.com/
@@ -83,7 +84,7 @@ const PostList = () => {
     <div className="PostList">
       <header>🎁 Post List</header>
       {posts.length === 0 ? (
-        <h1>Loading...</h1>
+        <SkeletonComponent></SkeletonComponent>
       ) : (
         posts.map((post) => {
           return <PostItem key={post.id} post={post} />;

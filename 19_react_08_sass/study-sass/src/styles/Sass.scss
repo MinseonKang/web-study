@@ -1,0 +1,62 @@
+// .Sass {
+//   display: flex;
+
+//   .box {
+//     width: 100px;
+//     height: 100px;
+
+//     // temp
+//     border: 1px solid black;
+//   }
+// }
+
+/////////////////////////////////////////////////////
+// _utils 불러오기
+@import "./utils.scss";
+
+.Sass {
+  display: flex;
+
+  .box {
+    // width: $box-size;
+    // height: $box-size;
+    @include box(120px, 120px);
+
+    // 중첩 안에서 &: 부모 선택자 참조하여 치환
+    // .box.red랑 같다
+    &.red {
+      background-color: $color-red;
+    }
+    &.orange {
+      background-color: $color-orange;
+    }
+    &.yellow {
+      background-color: $color-yellow;
+    }
+    &.green {
+      background-color: $color-green;
+    }
+    &.blue {
+      background-color: $color-blue;
+    }
+    &.indigo {
+      background-color: $color-indigo;
+    }
+    &.purple {
+      background-color: $color-purple;
+    }
+
+    &:hover {
+      $this-animation: $animaiton-duration * 2;
+      cursor: pointer;
+      transform: translateY(-20px);
+      transition: transform $this-animation;
+    }
+  }
+}
+// max-width에 변수를 넣을 땐 #{}를 붙여야 함
+@media (max-width: #{$breakpoint-md}) {
+  .Sass {
+    flex-direction: column-reverse;
+  }
+}

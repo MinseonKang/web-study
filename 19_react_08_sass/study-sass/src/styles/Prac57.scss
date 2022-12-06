@@ -1,0 +1,75 @@
+$color-pink: rgb(255, 220, 226);
+$color-yellow: rgb(255, 255, 184);
+$color-green: rgb(118, 192, 118);
+$circle-size: 150px;
+
+.Prac57 {
+  .circle {
+    width: $circle-size;
+    height: $circle-size;
+    border-radius: 100%;
+    position: relative;
+
+    &.pink {
+      background-color: $color-pink;
+      animation: animation1 3s ease-in-out infinite;
+    }
+
+    &.yellow {
+      background-color: $color-yellow;
+      animation: animation2 3s ease-in-out infinite;
+    }
+
+    &.green {
+      background-color: $color-green;
+      animation: animation3 3s ease-in-out infinite;
+    }
+  }
+}
+
+@mixin animation-rotate($name, $from, $to) {
+  @keyframes #{$name} {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d($to, $from, 0);
+    }
+    50% {
+      transform: translate3d($to, $to, 0);
+    }
+    75% {
+      transform: translate3d($from, $to, 0);
+    }
+    100% {
+      transform: translate3d($from, $from, 0);
+    }
+  }
+}
+
+@include animation-rotate(animation1, 0, 100px);
+@include animation-rotate(animation2, 0, 200px);
+@include animation-rotate(animation3, 0, 300px);
+
+// 기존 코드
+// @keyframes move {
+//   0% {
+//     left: 0px;
+//   }
+//   25% {
+//     left: 200px;
+//     top: 0px;
+//   }
+//   50% {
+//     left: 200px;
+//     top: 200px;
+//   }
+//   75% {
+//     left: 0px;
+//     top: 200px;
+//   }
+//   100% {
+//     left: 0px;
+//     top: 0px;
+//   }
+// }

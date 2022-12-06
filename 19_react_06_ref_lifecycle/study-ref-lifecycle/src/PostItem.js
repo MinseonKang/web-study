@@ -1,3 +1,5 @@
+import "./styles/PostItem.scss";
+
 const PostItem = (props) => {
   // props
   // { post: { id: x, title: xxx, body: xxx } }
